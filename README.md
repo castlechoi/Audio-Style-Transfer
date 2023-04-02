@@ -9,4 +9,6 @@
 * References  
   * https://pytorch.org/tutorials/advanced/neural_style_tutorial.html
   * https://github.com/alishdipani/Neural-Style-Transfer-Audio
+  * Self-Supervised VQ-VAE for one-shot music style transfer
+  * Groove to Groove
  
