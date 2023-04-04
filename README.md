@@ -11,4 +11,4 @@
   * https://github.com/alishdipani/Neural-Style-Transfer-Audio
   * Self-Supervised VQ-VAE for one-shot music style transfer
   * Groove to Groove
- 
+  * https://google-research.github.io/seanet/musiclm/examples/?utm_source=substack&utm_medium=email
