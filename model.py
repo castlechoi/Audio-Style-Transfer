@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-class CNNModel(nn.Module):
+class CNN(nn.Module):
 	def __init__(self):
 		super(CNNModel, self).__init__()
 		self.cnn1 = nn.Sequential(
