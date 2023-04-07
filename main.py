@@ -4,9 +4,15 @@ import numpy as np
 
 from datetime import datetime
 
+import torch
+import torch.nn as nn
+import torch.optim as optim
+
 from model import CNN
 from dataloader import data_generator
 from trainer import Trainer
+
+from config import Config
 
 
 # Args selections
@@ -38,12 +44,15 @@ torch.backends.cudnn.deterministic = False
 torch.backends.cudnn.benchmark = False
 np.random.seed(SEED)
 
-# load model
-style_transfer_model = CNN()
+config = Config()
 
 data_path = "./dataset"
 
 style_wv, style_sr,content_wv, content_wv = data_generator(os.path.join(data_path, "style.wav"),os.path.join(data_path, "content.wav"))
 
+# load model
+model = CNN()
+optimizer = optim.Adam(model.parameters(), lr = config.lr, betas = (config.beta1, config.beta2), weight_decay = config.weight_decay)
 
-Trainer()
+
+Trainer(mode, optimizer, style_wv, style_sr, content_wv, content_sr, config)
