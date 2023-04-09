@@ -23,21 +23,23 @@ class ContentLoss(nn.Module):
     def __init__(self, target):
         super(ContentLoss, self).__init__()
         self.target = target.detach()
+        self.criterion = nn.MSELoss()
         
     def forward(self, input):
-        self.loss = nn.MSELoss(input, self.target)
-        return input
+        loss = self.criterion(input, self.target)
+        return loss
     
 class StyleLoss(nn.Module):
     # gram matrix loss between two images
     def __init__(self, target_feature):
         super(StyleLoss, self).__init__()
         self.target = gram_matrix(target_feature).detach()
+        self.criterion = nn.MSELoss()
         
     def forward(self, input):
         G = gram_matrix(input)
-        self.loss =  nn.MSELoss(G, self.target)
-        return input
+        loss =  self.criterion(G, self.target)
+        return loss
     
       
      
