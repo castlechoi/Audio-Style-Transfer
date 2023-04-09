@@ -1,5 +1,5 @@
 import torch.nn as nn
-
+import torch
 """
         a : batch size
         b : feature map count
@@ -24,7 +24,7 @@ class ContentLoss(nn.Module):
         super(ContentLoss, self).__init__()
         self.target = target.detach()
         
-    def forward(self. input):
+    def forward(self, input):
         self.loss = nn.MSELoss(input, self.target)
         return input
     
