@@ -5,7 +5,10 @@ from loss import StyleLoss, ContentLoss
 def Trainer(model, optimizer, style_img, content_img, config):
     criterion_style = StyleLoss(style_img)
     criterion_content = ContentLoss(content_img)
-    
+
+    model.requires_grad_(False)
+    criterion_style.requires_grad_(True)
+    criterion_content.requires_grad_(True)
     for i in range(config.epochs + 1):
         optimizer.zero_grad()
         content_pred = model(content_img)
