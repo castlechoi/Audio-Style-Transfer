@@ -1,5 +1,6 @@
 import torch.nn as nn
 class VGG19(nn.Module):
+    """ VGG-19 Model"""
     """ Can modified VGG model of channel parameters by using config data """
     def __init__(self,config):
         super(VGG19,self).__init__()

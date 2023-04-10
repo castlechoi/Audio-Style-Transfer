@@ -26,6 +26,7 @@ parser.add_argument('--content', default='picasso.jpg', type=str, help='Content 
 parser.add_argument('--device', default='cuda', type=str, help='cpu or cuda')
 parser.add_argument('--seed', default=42, type=int, help='seed value')
 args, unknown = parser.parse_known_args()
+
 # set GPU option
 with_gpu = torch.cuda.is_available()
 if with_gpu:
@@ -45,21 +46,18 @@ torch.backends.cudnn.benchmark = False
 np.random.seed(SEED)
 
 config = Config()
-
+# define path
 file_path = "./dataset"
-
-# image style transfer
 style_path = os.path.join(file_path,style_data)
 content_path = os.path.join(file_path,content_data)
 
+# read image from the path
 style_img = read_image(style_path).to(device)
 content_img = read_image(content_path).to(device)
 
-
-
-# load model
+# define model and optimizer
 model = NeuralTransfer(config)
 optimizer = optim.Adam(model.parameters(), lr = config.lr, betas = (config.beta1, config.beta2), weight_decay = config.weight_decay)
 
-
+# train the model
 style_pred, content_pred, mix_pred = Trainer(model, optimizer, style_img, content_img, config)

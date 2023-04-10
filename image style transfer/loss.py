@@ -16,10 +16,8 @@ def gram_matrix(input):
     # normalized ->  값의 개수 ? 
     return G.div(a*b*c*d)
     
-    
-
 class ContentLoss(nn.Module):
-# Loss is calculated based on original image which is saved in ContentLoss object
+    """ Loss is calculated based on original image which is saved in ContentLoss object """
     def __init__(self, target):
         super(ContentLoss, self).__init__()
         self.target = target.detach()
@@ -30,7 +28,7 @@ class ContentLoss(nn.Module):
         return loss
     
 class StyleLoss(nn.Module):
-    # gram matrix loss between two images
+    """ gram matrix loss between two images """
     def __init__(self, target_feature):
         super(StyleLoss, self).__init__()
         self.target = gram_matrix(target_feature).detach()

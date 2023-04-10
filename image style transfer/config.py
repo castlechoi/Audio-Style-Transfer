@@ -9,7 +9,7 @@ class Config(object):
         self.beta2 = 0.99
         self.weight_decay = 0
         
-        # VGG model parameter
+        # VGG-19 model parameter
         self.in_channel = 1
         self.conv_1_channel = 64
         self.conv_2_channel = 128
