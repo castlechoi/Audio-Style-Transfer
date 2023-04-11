@@ -13,4 +13,8 @@ Autograd of torch.Tensor
   * tensor which is made by user-> grad_fn = None
   * tensor which is result of the calculation  
   -> grad_fn reference is Function class which make the Tensor
-* Tensor and Function are connected and encode every calculation process
+* Tensor and Function are connected and encode every computation process and build up an acyclic graph
+ * out.backward()
+ * x.grad  
+  => d(out) / dx
+ 
